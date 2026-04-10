@@ -1,0 +1,145 @@
+:root {
+    --primary-green: #2E7D32; /* Rich agricultural green */
+    --secondary-green: #4CAF50;
+    --light-green: #E8F5E9;
+    --dark-green: #1B5E20;
+    --text-dark: #333333;
+    --text-light: #F5F5F5;
+    --farm-bg: #f9fbf9;
+}
+
+body {
+    background-color: var(--farm-bg);
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-dark);
+}
+
+.farm-navbar {
+    background-color: var(--primary-green) !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.farm-navbar .navbar-brand {
+    color: var(--text-light) !important;
+    font-weight: bold;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.farm-navbar .nav-link {
+    color: var(--text-light) !important;
+    font-weight: 500;
+    margin: 0 5px;
+    transition: 0.3s;
+}
+
+.farm-navbar .nav-link:hover {
+    color: #C8E6C9 !important;
+    transform: translateY(-2px);
+}
+
+/* Authentication Cards */
+.auth-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--light-green) 0%, #C8E6C9 100%);
+    padding: 2rem;
+}
+
+.auth-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    max-width: 400px;
+    width: 100%;
+}
+
+.auth-card .farm-icon {
+    font-size: 3rem;
+    color: var(--primary-green);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.btn-farm {
+    background-color: var(--primary-green);
+    color: white;
+    border: none;
+    font-weight: 600;
+    padding: 0.75rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-farm:hover {
+    background-color: var(--dark-green);
+    color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* Dashboard */
+.dashboard-header {
+    background: linear-gradient(rgba(46, 125, 50, 0.8), rgba(46, 125, 50, 0.8)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1932&q=80') center/cover;
+    color: white;
+    padding: 4rem 2rem;
+    border-radius: 15px;
+    margin-top: 2rem;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Crop Cards */
+.crop-card {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    height: 100%;
+}
+
+.crop-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+}
+
+.crop-card img {
+    height: 200px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.crop-card .card-body {
+    padding: 1.5rem;
+}
+
+.crop-card .crop-title {
+    color: var(--dark-green);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.crop-card .crop-price {
+    font-size: 1.1rem;
+    color: #555;
+    font-weight: 500;
+}
+
+/* Admin Table */
+.admin-table-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.05);
+    margin-top: 2rem;
+}
+
+.table-hover tbody tr:hover {
+    background-color: var(--light-green);
+}

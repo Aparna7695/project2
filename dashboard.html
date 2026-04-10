@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard - FarmConnect{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="dashboard-header text-white mb-5">
+        <h1 class="display-4 fw-bold">Welcome, {{ current_user.name }}! 👨‍🌾</h1>
+        <p class="lead">Manage your agriculture resources efficiently securely.</p>
+        <a href="{{ url_for('crops') }}" class="btn btn-light btn-lg mt-3 fw-bold text-success">Explore Marketplace</a>
+    </div>
+
+    <div class="row g-4 mt-4 mb-5">
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm" style="border-radius: 12px; background: white;">
+                <div class="card-body text-center p-4">
+                    <div style="font-size: 3rem; color: var(--primary-green);">🛡️</div>
+                    <h4 class="fw-bold mt-3">Secure Identity</h4>
+                    <p class="text-muted">Your account is protected using Werkzeug password hashing.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm" style="border-radius: 12px; background: white;">
+                <div class="card-body text-center p-4">
+                    <div style="font-size: 3rem; color: var(--primary-green);">🔐</div>
+                    <h4 class="fw-bold mt-3">Role-Based Access</h4>
+                    <p class="text-muted">You are logged in as a <strong>{{ current_user.role|capitalize }}</strong>. Authorization rules apply.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm" style="border-radius: 12px; background: white;">
+                <div class="card-body text-center p-4">
+                    <div style="font-size: 3rem; color: var(--primary-green);">📊</div>
+                    <h4 class="fw-bold mt-3">Data Management</h4>
+                    <p class="text-muted">Explore agricultural listings stored and dynamically presented.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

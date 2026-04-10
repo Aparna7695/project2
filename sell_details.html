@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block title %}Sell Details - FarmConnect{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold text-success">📦 Sell Details (Orders)</h2>
+        <div>
+            <a href="{{ url_for('admin') }}" class="btn btn-outline-secondary px-3">Back to Admin</a>
+            <span class="badge bg-danger ms-2 py-2 px-3 fs-6">Admin Access Only</span>
+        </div>
+    </div>
+
+    <!-- Orders Management Section -->
+    <div class="admin-table-container mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h4>Incoming Crop Orders</h4>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>Order ID</th>
+                        <th>User Name</th>
+                        <th>Crop</th>
+                        <th>Quantity (kg)</th>
+                        <th>Address</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in orders %}
+                    <tr>
+                        <td>#{{ order.id }}</td>
+                        <td>{{ order.user.name }}</td>
+                        <td>{{ order.crop_name }}</td>
+                        <td>{{ order.quantity }}</td>
+                        <td>{{ order.address }}</td>
+                        <td>
+                            {% if order.status == 'Pending' %}
+                                <span class="badge bg-warning text-dark">{{ order.status }}</span>
+                            {% elif order.status == 'Approved' %}
+                                <span class="badge bg-success">{{ order.status }}</span>
+                            {% else %}
+                                <span class="badge bg-danger">{{ order.status }}</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if order.status == 'Pending' %}
+                                <a href="{{ url_for('modify_order', order_id=order.id, action='approve') }}" class="btn btn-sm btn-outline-success">Approve</a>
+                                <a href="{{ url_for('modify_order', order_id=order.id, action='reject') }}" class="btn btn-sm btn-outline-danger ms-1">Reject</a>
+                            {% else %}
+                                <span class="text-muted small">Processed</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="7" class="text-center py-4 text-muted">No orders placed yet.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

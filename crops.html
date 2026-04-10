@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block title %}Crops Marketplace - FarmConnect{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold" style="color: var(--dark-green);">Marketplace Crops</h2>
+        <span class="badge bg-success py-2 px-3 fs-6">Today's Prices</span>
+    </div>
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 mt-2">
+        {% for crop in crops %}
+        <div class="col">
+            <div class="card crop-card h-100">
+                <img src="{{ url_for('static', filename='images/' + crop.image) }}" class="card-img-top" alt="{{ crop.name }}">
+                <div class="card-body">
+                    <h5 class="crop-title">{{ crop.name }}</h5>
+                    <p class="crop-price mb-0"><strong>Price:</strong> {{ crop.price }}</p>
+                </div>
+                <div class="card-footer bg-white border-top-0 pt-0 pb-3">
+                    <button class="btn btn-outline-success w-100 fw-bold" data-bs-toggle="modal" data-bs-target="#detailsModal-{{ loop.index }}">View Details</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Details Modal for {{ crop.name }} -->
+        <div class="modal fade" id="detailsModal-{{ loop.index }}" tabindex="-1" aria-labelledby="detailsModalLabel-{{ loop.index }}" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-light">
+                        <h5 class="modal-title" id="detailsModalLabel-{{ loop.index }}">{{ crop.name }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <img src="{{ url_for('static', filename='images/' + crop.image) }}" class="img-fluid rounded mb-3" style="max-height: 200px; object-fit: cover;" alt="{{ crop.name }}">
+                        <h4 class="text-success mb-2">{{ crop.price }}</h4>
+                        <p class="text-muted">{{ crop.description }}</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-success fw-bold px-4" data-bs-toggle="modal" data-bs-target="#buyModal-{{ loop.index }}">Buy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Buy Modal for {{ crop.name }} -->
+        <div class="modal fade" id="buyModal-{{ loop.index }}" tabindex="-1" aria-labelledby="buyModalLabel-{{ loop.index }}" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content border-success">
+                    <div class="modal-header bg-success text-white">
+                        <h5 class="modal-title" id="buyModalLabel-{{ loop.index }}">Purchase {{ crop.name }}</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form action="{{ url_for('buy') }}" method="POST">
+                        <div class="modal-body">
+                            <input type="hidden" name="crop_name" value="{{ crop.name }}">
+                            <input type="hidden" name="price" value="{{ crop.price }}">
+                            
+                            <div class="mb-3">
+                                <label for="quantity-{{ loop.index }}" class="form-label fw-bold">Quantity (kg)</label>
+                                <input type="number" class="form-control" id="quantity-{{ loop.index }}" name="quantity" min="1" required placeholder="Enter amount in kg">
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="address-{{ loop.index }}" class="form-label fw-bold">Delivery Address</label>
+                                <textarea class="form-control" id="address-{{ loop.index }}" name="address" rows="3" required placeholder="Full shipping address..."></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer bg-light">
+                            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#detailsModal-{{ loop.index }}">Back</button>
+                            <button type="submit" class="btn btn-success fw-bold">Confirm Order</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
