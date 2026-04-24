@@ -26,6 +26,7 @@
                         <th>Crop</th>
                         <th>Quantity (kg)</th>
                         <th>Address</th>
+                        <th>Payment</th>
                         <th>Status</th>
                         <th>Actions</th>
                     </tr>
@@ -34,17 +35,20 @@
                     {% for order in orders %}
                     <tr>
                         <td>#{{ order.id }}</td>
-                        <td>{{ order.user.name }}</td>
+                        <td>{{ order.user_name }}</td>
                         <td>{{ order.crop_name }}</td>
                         <td>{{ order.quantity }}</td>
                         <td>{{ order.address }}</td>
+                        <td>{{ order.payment_method or 'N/A' }}</td>
                         <td>
                             {% if order.status == 'Pending' %}
                                 <span class="badge bg-warning text-dark">{{ order.status }}</span>
                             {% elif order.status == 'Approved' %}
                                 <span class="badge bg-success">{{ order.status }}</span>
-                            {% else %}
+                            {% elif order.status == 'Rejected' %}
                                 <span class="badge bg-danger">{{ order.status }}</span>
+                            {% else %}
+                                <span class="badge bg-secondary">{{ order.status }}</span>
                             {% endif %}
                         </td>
                         <td>
@@ -58,7 +62,7 @@
                     </tr>
                     {% else %}
                     <tr>
-                        <td colspan="7" class="text-center py-4 text-muted">No orders placed yet.</td>
+                        <td colspan="8" class="text-center py-4 text-muted">No orders placed yet.</td>
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -67,3 +71,4 @@
     </div>
 </div>
 {% endblock %}
+
