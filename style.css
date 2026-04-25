@@ -190,12 +190,6 @@ body {
     text-shadow: 0 0 15px #00ff88;
 }
 
-
-
-
-
-
-
 /* --- Marketplace Premium Cards --- */
 .crop-card {
     border: none;
@@ -276,4 +270,24 @@ body {
     padding: 5rem 2rem;
     margin: 2rem 0;
     box-shadow: 0 20px 40px rgba(6, 78, 59, 0.15);
+}
+
+/* --- Modal Form Visibility Fix --- */
+.modal-content .form-label {
+    color: #000000 !important;
+    text-shadow: none !important;
+}
+
+.modal-content .form-control {
+    color: #000000 !important;
+    background-color: #ffffff !important;
+    border: 1px solid #ced4da !important;
+}
+
+.modal-content .form-control::placeholder {
+    color: #6c757d !important;
+}
+
+.modal-content .form-check-label {
+    color: #000000 !important;
 }
