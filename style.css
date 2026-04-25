@@ -1,145 +1,279 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
 :root {
-    --primary-green: #2E7D32; /* Rich agricultural green */
-    --secondary-green: #4CAF50;
-    --light-green: #E8F5E9;
-    --dark-green: #1B5E20;
-    --text-dark: #333333;
-    --text-light: #F5F5F5;
-    --farm-bg: #f9fbf9;
+    --tech-emerald: #10b981;
+    --obsidian: #020617;
+    --glass-border: rgba(255, 255, 255, 0.1);
 }
 
 body {
-    background-color: var(--farm-bg);
-    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: var(--text-dark);
+    background-color: #f0fdf4; /* Light Sage */
+    font-family: 'Inter', sans-serif;
+    color: #064e3b;
+    margin: 0;
+    overflow-x: hidden;
+    /* Fresh Botanical Background */
+    background-image: 
+        radial-gradient(at 0% 0%, hsla(142, 76%, 90%, 1) 0, transparent 50%), 
+        radial-gradient(at 100% 100%, hsla(161, 74%, 92%, 1) 0, transparent 50%),
+        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0c16.569 0 30 13.431 30 30S46.569 60 30 60 0 46.569 0 30 13.431 0 30 0zm0 10c-11.046 0-20 8.954-20 20s8.954 20 20 20 20-8.954 20-20-8.954-20-20-20z' fill='%2310b981' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
 }
 
+/* --- Premium Navbar Visibility --- */
 .farm-navbar {
-    background-color: var(--primary-green) !important;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: #064e3b !important; /* Deep Forest Green */
+    backdrop-filter: blur(10px);
+    border-bottom: 3px solid #10b981;
+    padding: 1rem 0;
 }
 
 .farm-navbar .navbar-brand {
-    color: var(--text-light) !important;
-    font-weight: bold;
-    font-size: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    font-weight: 800;
+    font-size: 1.6rem;
+    color: #ffffff !important;
 }
 
 .farm-navbar .nav-link {
-    color: var(--text-light) !important;
-    font-weight: 500;
-    margin: 0 5px;
-    transition: 0.3s;
+    color: #ffffff !important;
+    font-weight: 600;
+    padding: 0.8rem 1.2rem !important;
 }
 
 .farm-navbar .nav-link:hover {
-    color: #C8E6C9 !important;
-    transform: translateY(-2px);
+    color: #00ff88 !important;
+    transform: scale(1.05);
 }
 
-/* Authentication Cards */
+/* --- Keep Auth Pages High-Tech Dark --- */
 .auth-wrapper {
     min-height: 100vh;
+    background: 
+        radial-gradient(circle at 50% -20%, rgba(16, 185, 129, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 0% 100%, rgba(6, 78, 59, 0.1) 0%, transparent 40%),
+        var(--obsidian) !important;
+    color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, var(--light-green) 0%, #C8E6C9 100%);
     padding: 2rem;
+    position: relative;
+}
+
+/* Subtle Tech Grid */
+.auth-wrapper::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px), 
+                      linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
 }
 
 .auth-card {
-    background: white;
-    padding: 2.5rem;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    max-width: 400px;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(25px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 4rem 3rem;
+    box-shadow: 0 25px 80px -20px rgba(0, 0, 0, 0.8);
     width: 100%;
-}
-
-.auth-card .farm-icon {
-    font-size: 3rem;
-    color: var(--primary-green);
+    max-width: 440px;
     text-align: center;
-    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+    transition: all 0.5s ease;
 }
 
-.btn-farm {
-    background-color: var(--primary-green);
-    color: white;
-    border: none;
-    font-weight: 600;
-    padding: 0.75rem;
-    border-radius: 8px;
+/* Tech Border Glow Effect */
+.auth-card:hover {
+    border-color: rgba(16, 185, 129, 0.4);
+    box-shadow: 0 0 50px rgba(16, 185, 129, 0.15);
+}
+
+.auth-card h3 {
+    font-weight: 800;
+    font-size: 2.2rem;
+    letter-spacing: -2px;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(to bottom, #ffffff, #94a3b8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.auth-card .tagline {
+    color: #ffffff !important; /* MAXIMUM WHITE */
+    font-weight: 500;
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+    opacity: 1 !important; /* Removed dimness */
+}
+
+.form-label {
+    display: block;
+    text-align: left;
+    font-weight: 800;
+    font-size: 0.8rem;
+    color: #ffffff !important; /* MAXIMUM WHITE */
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.form-control {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    color: #ffffff !important;
+    border-radius: 12px;
+    padding: 16px;
+    font-size: 1rem;
     transition: all 0.3s ease;
 }
 
-.btn-farm:hover {
-    background-color: var(--dark-green);
-    color: white;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.7) !important; /* Brightened placeholder */
 }
 
-/* Dashboard */
-.dashboard-header {
-    background: linear-gradient(rgba(46, 125, 50, 0.8), rgba(46, 125, 50, 0.8)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1932&q=80') center/cover;
-    color: white;
-    padding: 4rem 2rem;
-    border-radius: 15px;
-    margin-top: 2rem;
-    text-align: center;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+.form-control:focus {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border-color: #00ffa3 !important;
+    box-shadow: 0 0 20px rgba(0, 255, 163, 0.2) !important;
+    outline: none;
 }
 
-/* Crop Cards */
-.crop-card {
+.btn-farm {
+    background: linear-gradient(to right, #10b981, #059669);
+    color: #ffffff;
     border: none;
     border-radius: 12px;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 14px;
+    font-weight: 800;
+    font-size: 1rem;
+    width: 100%;
+    margin-top: 2rem;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-farm:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 50px rgba(16, 185, 129, 0.5);
+    filter: brightness(1.2);
+}
+
+.signup-section {
+    margin-top: 1.5rem !important;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffff00 !important; /* EMERGENCY BRIGHT YELLOW */
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-align: center;
+    display: block !important;
+    visibility: visible !important;
+    position: relative;
+    z-index: 999;
+}
+
+.signup-link {
+    color: #00ff88 !important; /* Neon Green */
+    font-weight: 900;
+    text-decoration: underline !important;
+    margin-left: 10px;
+}
+
+.signup-link:hover {
+    color: #ffffff !important;
+    text-shadow: 0 0 15px #00ff88;
+}
+
+
+
+
+
+
+
+/* --- Marketplace Premium Cards --- */
+.crop-card {
+    border: none;
     background: white;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    border-radius: 24px;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(16, 185, 129, 0.1);
+    overflow: hidden;
     height: 100%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
 .crop-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+    transform: translateY(-12px);
+    box-shadow: 0 30px 60px -15px rgba(16, 185, 129, 0.15);
 }
 
 .crop-card img {
-    height: 200px;
+    height: 220px;
     object-fit: cover;
+    transition: transform 0.8s ease;
     width: 100%;
 }
 
-.crop-card .card-body {
-    padding: 1.5rem;
+.crop-card:hover img {
+    transform: scale(1.08);
 }
 
-.crop-card .crop-title {
-    color: var(--dark-green);
-    font-weight: 700;
-    margin-bottom: 0.5rem;
+/* --- Modern Buttons --- */
+.btn-farm {
+    background: linear-gradient(135deg, var(--primary-emerald), var(--dark-forest));
+    color: white;
+    border: none;
+    border-radius: 14px;
+    padding: 12px 24px;
+    font-weight: 600;
+    box-shadow: 0 10px 20px -5px rgba(16, 185, 129, 0.3);
+    transition: var(--transition-smooth);
+    width: 100%;
+    margin-top: 1rem;
 }
 
-.crop-card .crop-price {
-    font-size: 1.1rem;
-    color: #555;
-    font-weight: 500;
+.btn-farm:hover {
+    box-shadow: 0 20px 30px -5px rgba(16, 185, 129, 0.4);
+    transform: translateY(-2px);
+    filter: brightness(1.1);
 }
 
-/* Admin Table */
+/* --- Admin Panel Aesthetics --- */
 .admin-table-container {
     background: white;
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 8px 15px rgba(0,0,0,0.05);
-    margin-top: 2rem;
+    border-radius: 24px;
+    border: 1px solid var(--border-subtle);
+    padding: 2.5rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.02);
 }
 
-.table-hover tbody tr:hover {
-    background-color: var(--light-green);
+.table {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.badge {
+    padding: 8px 14px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* --- Dashboard Header --- */
+.dashboard-header {
+    background: linear-gradient(rgba(6, 78, 59, 0.8), rgba(6, 78, 59, 0.8)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1600&q=80');
+    background-size: cover;
+    background-position: center;
+    border-radius: 30px;
+    padding: 5rem 2rem;
+    margin: 2rem 0;
+    box-shadow: 0 20px 40px rgba(6, 78, 59, 0.15);
 }
